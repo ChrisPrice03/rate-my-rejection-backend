@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompanyService {
 
-    public List<Company> getCompany() {
+    public List<Company> getCompanies() {
         return Arrays.asList(new Company("fuck you, chris", 6.0, 9.0, 420));
     }
 
