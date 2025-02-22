@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.rate_my_rejection_backend.rate_my_rejection.dto.Company;
+import com.rate_my_rejection_backend.rate_my_rejection.dto.Review;
 import com.rate_my_rejection_backend.rate_my_rejection.Repositories.CompanyRepository;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,29 @@ public class CompanyService {
             // Set other default properties for the new company if needed
             return companyRepository.save(newCompany);
         }
+    }
+
+    public void loadCompany(Company company, List<Review> reviews) {
+        Integer numReviews = reviews.size();
+        Double avgRating = 0.0;
+        Double avgCompetitiveness = 0.0;
+        Integer percentApplyAgain = 0;
+
+        for (int i = 0; i < numReviews; i++) {
+            avgRating += reviews.get(i).getQuality();
+            avgCompetitiveness += reviews.get(i).getCompetitiveness();
+            if (reviews.get(i).getApplyAgain()) {
+                percentApplyAgain++;
+            }
+        }
+
+        avgRating /= numReviews;
+        avgCompetitiveness /= numReviews;
+        percentApplyAgain /= numReviews;
+        percentApplyAgain *= 100;
+        
+        company.setRating(avgRating);
+        company.setCompetitiveness(avgCompetitiveness);
+        company.setApplyAgain(percentApplyAgain);
     }
 }
