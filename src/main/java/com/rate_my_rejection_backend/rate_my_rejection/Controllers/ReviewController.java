@@ -27,6 +27,7 @@ public class ReviewController {
                 "      \"competitiveness\": 3,\n" +
                 "      \"selected\": \"selectStr\",\n" +
                 "      \"numRounds\": 3\n" +
+                "      \"other\": \"otherInfo\"\n" +
                 "    },\n" +
                 "    {\n" +
                 "      \"role\" : \"rolestr2\",\n" +
@@ -35,6 +36,7 @@ public class ReviewController {
                 "      \"competitiveness\": 3,\n" +
                 "      \"selected\": \"selectStr\",\n" +
                 "      \"numRounds\": 2\n" +
+                "      \"other\": \"otherInfo\"\n" +
                 "    },\n" +
                 "    {\n" +
                 "      \"role\" : \"rolestr3\",\n" +
@@ -43,6 +45,7 @@ public class ReviewController {
                 "      \"competitiveness\": 1,\n" +
                 "      \"selected\": \"selectStr\",\n" +
                 "      \"numRounds\": 2\n" +
+                "      \"other\": \"otherInfo\"\n" +
                 "    }\n" +
                 "  ]\n" +
                 "]";
