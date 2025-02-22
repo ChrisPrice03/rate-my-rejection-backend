@@ -58,9 +58,7 @@ public class ReviewController {
         String selected = (String) requestBody.get("rejected"); // JSON: "rejected" → Constructor: "selected"
         Integer numRounds = (Integer) requestBody.get("rounds"); // JSON: "rounds" → Constructor: "numRounds"
         String other = (String) requestBody.get("other");
-
-        // Convert "TRUE"/"FALSE" string to Boolean
-        Boolean applyAgain = Boolean.parseBoolean((String) requestBody.get("applyAgain"));
+        Boolean applyAgain = (Boolean) requestBody.get("applyAgain");
 
         // Create Review object with the correctly mapped values
         Review review = new Review(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
