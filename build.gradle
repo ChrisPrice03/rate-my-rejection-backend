@@ -17,15 +17,11 @@ repositories {
 	mavenCentral()
 }
 
-//dependencies {
-//	implementation 'org.springframework.boot:spring-boot-starter'
-//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-//}
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web' // ✅ Add this line
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  // JPA starter
+ 	implementation 'mysql:mysql-connector-java:8.0.29' 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
