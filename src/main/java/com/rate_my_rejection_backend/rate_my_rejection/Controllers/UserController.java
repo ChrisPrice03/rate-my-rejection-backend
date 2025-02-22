@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/user")
@@ -19,7 +21,12 @@ public class UserController {
     private ReviewService reviewService;
 
     @GetMapping("/reviews/{username}")
-    public List<Review> getUserReviews(@PathVariable String username) {
-        return reviewService.getUserReviews(username);
+    public Map<String, Object> getUserReviews(@PathVariable String username) {
+        List<Review> reviews = reviewService.getUserReviews(username);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("reviews", reviews);
+
+        return response;
     }
 }
