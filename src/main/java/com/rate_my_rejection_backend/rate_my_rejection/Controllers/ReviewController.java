@@ -38,15 +38,11 @@ public class ReviewController {
         return response;
     }
 
-//    @PostMapping("/review")
-//    public Review createReview(@RequestBody Review review) {
-//        Company company = companyService.checkCompany(review.getCompanyName());
-//        //Review newReview = reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
-//        List<Review> reviews = reviewService.getReviews(review.getCompanyName());
-//
-//        companyService.loadCompany(company, reviews);
-//        return review;
-//    }
+    @GetMapping("/total")
+    public Integer totalReviews() {
+        return reviewService.allReviews();
+    }
+
     @PostMapping("/review")
     public Review createReview(@RequestBody Map<String, Object> requestBody) {
         // Extract values with proper type casting and naming adjustments

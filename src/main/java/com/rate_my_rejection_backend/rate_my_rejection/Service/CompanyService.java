@@ -49,8 +49,8 @@ public class CompanyService {
 
         avgRating /= numReviews;
         avgCompetitiveness /= numReviews;
-        percentApplyAgain /= numReviews;
         percentApplyAgain *= 100;
+        percentApplyAgain /= numReviews;
         
         company.setRating(avgRating);
         company.setCompetitiveness(avgCompetitiveness);

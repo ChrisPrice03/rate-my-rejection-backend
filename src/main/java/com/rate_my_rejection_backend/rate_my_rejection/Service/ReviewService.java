@@ -19,6 +19,11 @@ public class ReviewService {
         return reviewRepository.findByCompanyName(companyName);
     }
 
+    public Integer allReviews() {
+        List<Review> total = reviewRepository.findAll();
+        return total.size();
+    }
+
     public Review createReview(String companyName, String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Boolean applyAgain, Integer numRounds, String other) {
         Review newReview = new Review(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
         return reviewRepository.save(newReview);
