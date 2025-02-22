@@ -55,5 +55,7 @@ public class CompanyService {
         company.setRating(avgRating);
         company.setCompetitiveness(avgCompetitiveness);
         company.setApplyAgain(percentApplyAgain);
+
+        companyRepository.save(company);
     }
 }

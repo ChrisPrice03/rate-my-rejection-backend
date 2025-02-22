@@ -61,14 +61,14 @@ public class ReviewController {
         Boolean applyAgain = (Boolean) requestBody.get("applyAgain");
 
         // Create Review object with the correctly mapped values
-        Review review = new Review(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
+        Review review = reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
 
         // Ensure company exists
         Company company = companyService.checkCompany(companyName);
 
         // Save and associate review with company
         List<Review> reviews = reviewService.getReviews(companyName);
-        //companyService.loadCompany(company, reviews);
+        companyService.loadCompany(company, reviews);
 
         return review; // Persist the review
     }
