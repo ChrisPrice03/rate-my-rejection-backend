@@ -1,6 +1,5 @@
 package com.rate_my_rejection_backend.rate_my_rejection.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.rate_my_rejection_backend.rate_my_rejection.dto.Company;

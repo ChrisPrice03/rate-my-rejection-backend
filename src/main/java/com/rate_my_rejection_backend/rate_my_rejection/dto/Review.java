@@ -2,7 +2,14 @@ package com.rate_my_rejection_backend.rate_my_rejection.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Review {
+
+    @Id
+    private Long id;
 
     @JsonProperty("role")
     private String role;
