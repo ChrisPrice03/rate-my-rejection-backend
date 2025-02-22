@@ -40,9 +40,9 @@ public class ReviewController {
 
     @PostMapping("/review")
     public Review createReview(@RequestBody Review review) {
-        Company company = companyService.checkCompany(companyName);
+        Company company = companyService.checkCompany(review.getCompanyName());
         //Review newReview = reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
-        List<Review> reviews = reviewService.getReviews(companyName);
+        List<Review> reviews = reviewService.getReviews(review.getCompanyName());
 
         companyService.loadCompany(company, reviews);
         return review;
