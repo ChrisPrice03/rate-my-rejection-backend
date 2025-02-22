@@ -46,6 +46,7 @@ public class ReviewController {
     @PostMapping("/review")
     public Review createReview(@RequestBody Map<String, Object> requestBody) {
         // Extract values with proper type casting and naming adjustments
+        String username = (String) requestBody.get("username");
         String companyName = (String) requestBody.get("companyName");
         String role = (String) requestBody.get("role");
         Integer quality = (Integer) requestBody.get("quality");
@@ -60,7 +61,7 @@ public class ReviewController {
         Company company = companyService.checkCompany(companyName);
 
         // Create Review object with the correctly mapped values
-        Review review = reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
+        Review review = reviewService.createReview(username, companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
 
         // Save and associate review with company
         List<Review> reviews = reviewService.getReviews(companyName);

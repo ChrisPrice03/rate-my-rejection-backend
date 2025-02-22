@@ -24,8 +24,8 @@ public class ReviewService {
         return total.size();
     }
 
-    public Review createReview(String companyName, String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Boolean applyAgain, Integer numRounds, String other) {
-        Review newReview = new Review(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
+    public Review createReview(String username, String companyName, String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Boolean applyAgain, Integer numRounds, String other) {
+        Review newReview = new Review(username, companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
         return reviewRepository.save(newReview);
     }
 

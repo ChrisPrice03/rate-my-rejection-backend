@@ -12,6 +12,9 @@ public class Review {
     //@Column(nullable = false, unique = true)
     private Long id;
 
+    @JsonProperty("username")
+    private String username;
+
     @JsonProperty("companyName")
     //@Column(nullable = false)
     private String companyName;
@@ -45,7 +48,8 @@ public class Review {
     public Review() {}
 
     // Parameterized constructor
-    public Review(String companyName, String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Boolean applyAgain, Integer numRounds, String other) {
+    public Review(String username, String companyName, String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Boolean applyAgain, Integer numRounds, String other) {
+        this.username = username;
         this.companyName = companyName;
         this.role = role;
         this.quality = quality;
@@ -59,6 +63,14 @@ public class Review {
 
     public Long getId() {
         return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getCompanyName() {
