@@ -13,4 +13,7 @@ public class CompanyService {
         return Arrays.asList(new Company("fuck you, chris", 6.0, 9.0, 420));
     }
 
+    public Company getCompany(String company) {
+        return new Company("fuck you, chris", 6.0, 9.0, 420);
+    }
 }
