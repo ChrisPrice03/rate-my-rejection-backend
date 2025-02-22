@@ -1,10 +1,12 @@
 package com.rate_my_rejection_backend.rate_my_rejection.dto;
 
-// import jakarta.persistence.Entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-// @Entity
+@Entity
 public class Company {
 
+    @Id
     private Long id;
 
     private String name;
