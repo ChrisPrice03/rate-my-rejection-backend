@@ -38,15 +38,40 @@ public class ReviewController {
         return response;
     }
 
+//    @PostMapping("/review")
+//    public Review createReview(@RequestBody Review review) {
+//        Company company = companyService.checkCompany(review.getCompanyName());
+//        //Review newReview = reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
+//        List<Review> reviews = reviewService.getReviews(review.getCompanyName());
+//
+//        companyService.loadCompany(company, reviews);
+//        return review;
+//    }
     @PostMapping("/review")
-    public Review createReview(@RequestBody Review review) {
-        Company company = companyService.checkCompany(review.getCompanyName());
-        //Review newReview = reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
-        List<Review> reviews = reviewService.getReviews(review.getCompanyName());
+    public Review createReview(@RequestBody Map<String, Object> requestBody) {
+        // Extract values with proper type casting and naming adjustments
+        String companyName = (String) requestBody.get("companyName");
+        String role = (String) requestBody.get("role");
+        Integer quality = (Integer) requestBody.get("quality");
+        Integer confidence = (Integer) requestBody.get("confidence");
+        Integer competitiveness = (Integer) requestBody.get("compet"); // JSON: "compet" → Constructor: "competitiveness"
+        String selected = (String) requestBody.get("rejected"); // JSON: "rejected" → Constructor: "selected"
+        Integer numRounds = (Integer) requestBody.get("rounds"); // JSON: "rounds" → Constructor: "numRounds"
+        String other = (String) requestBody.get("other");
 
-        companyService.loadCompany(company, reviews);
-        return review;
+        // Convert "TRUE"/"FALSE" string to Boolean
+        Boolean applyAgain = Boolean.parseBoolean((String) requestBody.get("applyAgain"));
+
+        // Create Review object with the correctly mapped values
+        Review review = new Review(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
+
+        // Ensure company exists
+        Company company = companyService.checkCompany(companyName);
+
+        // Save and associate review with company
+        List<Review> reviews = reviewService.getReviews(companyName);
+        //companyService.loadCompany(company, reviews);
+
+        return review; // Persist the review
     }
-
-
 }
