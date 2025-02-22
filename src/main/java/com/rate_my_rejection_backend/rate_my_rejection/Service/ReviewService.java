@@ -15,8 +15,8 @@ public class ReviewService {
         this.reviewRepository = reviewRepository;
     }
 
-    public List<Review> getReviews(String company) {
-        return reviewRepository.findAll();
+    public List<Review> getReviews(String companyName) {
+        return reviewRepository.findByCompanyName(companyName);
     }
 
 }
