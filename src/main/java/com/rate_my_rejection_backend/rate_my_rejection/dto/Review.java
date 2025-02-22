@@ -1,20 +1,23 @@
 package com.rate_my_rejection_backend.rate_my_rejection.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "review") // Explicitly define table name
 public class Review {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Ensure DB generates the ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Ensure database generates ID
+    //@Column(nullable = false, unique = true)
     private Long id;
 
     @JsonProperty("companyName")
+    //@Column(nullable = false)
     private String companyName;
 
     @JsonProperty("role")
+    //@Column(nullable = false)
     private String role;
 
     @JsonProperty("quality")
@@ -28,7 +31,7 @@ public class Review {
 
     @JsonProperty("selected")
     private String selected;
-    
+
     @JsonProperty("applyAgain")
     private Boolean applyAgain;
 
@@ -39,10 +42,9 @@ public class Review {
     private String other;
 
     // Default constructor
-    public Review() {
-        super();
-    }
+    public Review() {}
 
+    // Parameterized constructor
     public Review(String companyName, String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Boolean applyAgain, Integer numRounds, String other) {
         this.companyName = companyName;
         this.role = role;
@@ -55,7 +57,10 @@ public class Review {
         this.other = other;
     }
 
-    // Getters and setters
+    public Long getId() {
+        return id;
+    }
+
     public String getCompanyName() {
         return companyName;
     }
