@@ -60,11 +60,11 @@ public class ReviewController {
         String other = (String) requestBody.get("other");
         Boolean applyAgain = (Boolean) requestBody.get("applyAgain");
 
-        // Create Review object with the correctly mapped values
-        Review review = reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
-
         // Ensure company exists
         Company company = companyService.checkCompany(companyName);
+
+        // Create Review object with the correctly mapped values
+        Review review = reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
 
         // Save and associate review with company
         List<Review> reviews = reviewService.getReviews(companyName);
