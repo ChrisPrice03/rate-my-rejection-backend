@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/home")
-public class DatabaseController {
+public class CompanyController {
 
     @GetMapping
     public String companyList() {
