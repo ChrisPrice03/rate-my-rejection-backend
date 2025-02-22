@@ -2,13 +2,13 @@ package com.rate_my_rejection_backend.rate_my_rejection.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Review {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Ensure DB generates the ID
     private Long id;
 
     @JsonProperty("companyName")
@@ -28,6 +28,9 @@ public class Review {
 
     @JsonProperty("selected")
     private String selected;
+    
+    @JsonProperty("applyAgain")
+    private Boolean applyAgain;
 
     @JsonProperty("numRounds")
     private Integer numRounds;
@@ -40,12 +43,14 @@ public class Review {
         super();
     }
 
-    public Review(String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Integer numRounds, String other) {
+    public Review(String companyName, String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Boolean applyAgain, Integer numRounds, String other) {
+        this.companyName = companyName;
         this.role = role;
         this.quality = quality;
         this.confidence = confidence;
         this.competitiveness = competitiveness;
         this.selected = selected;
+        this.applyAgain = applyAgain;
         this.numRounds = numRounds;
         this.other = other;
     }
@@ -97,6 +102,14 @@ public class Review {
 
     public void setSelected(String selected) {
         this.selected = selected;
+    }
+
+    public Boolean getApplyAgain() {
+        return applyAgain;
+    }
+
+    public void setApplyAgain(Boolean applyAgain) {
+        this.applyAgain = applyAgain;
     }
 
     public Integer getNumRounds() {

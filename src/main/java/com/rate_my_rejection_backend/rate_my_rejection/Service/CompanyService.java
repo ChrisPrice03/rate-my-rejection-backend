@@ -21,10 +21,6 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
-    public Company getCompany(String company) {
-        return new Company("fuck you, chris", 6.0, 9.0, 420);
-    }
-
     public Company checkCompany(String companyName) {
         Optional<Company> existingCompany = companyRepository.findByName(companyName);
         if (existingCompany.isPresent()) {
