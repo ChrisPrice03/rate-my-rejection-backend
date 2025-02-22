@@ -37,7 +37,7 @@ public class ReviewController {
         return response;
     }
 
-    @GetMapping("/review")
+    @PostMapping("/review")
     public Review createReview(@RequestBody String companyName, String role, Integer quality, Integer confidence, Integer competitiveness, String selected, Boolean applyAgain, Integer numRounds, String other) {
         return reviewService.createReview(companyName, role, quality, confidence, competitiveness, selected, applyAgain, numRounds, other);
     }
