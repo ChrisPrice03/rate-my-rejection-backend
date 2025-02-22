@@ -26,7 +26,7 @@ public class ReviewController {
 
     @GetMapping("/{companyName}")  // Dynamic path variable
     public Map<String, Object> getCompanyInfo(@PathVariable String companyName) {
-        Company company = companyService.getCompany(companyName);
+        Company company = companyService.checkCompany(companyName);
         List<Review> reviews = reviewService.getReviews(companyName);
 
         Map<String, Object> response = new HashMap<>();
