@@ -29,4 +29,7 @@ public class ReviewService {
         return reviewRepository.save(newReview);
     }
 
+    public List<Review> getUserReviews(String username) {
+        return reviewRepository.findByUsername(username);
+    }
 }

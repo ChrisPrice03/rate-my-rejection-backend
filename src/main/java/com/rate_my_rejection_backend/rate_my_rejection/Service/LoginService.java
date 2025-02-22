@@ -4,6 +4,10 @@ import com.rate_my_rejection_backend.rate_my_rejection.dto.Login;
 import com.rate_my_rejection_backend.rate_my_rejection.Repositories.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.rate_my_rejection_backend.rate_my_rejection.dto.Review;
+
+
+import java.util.List;
 
 @Service
 public class LoginService {
