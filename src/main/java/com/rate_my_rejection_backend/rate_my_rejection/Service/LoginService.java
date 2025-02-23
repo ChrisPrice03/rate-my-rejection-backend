@@ -20,6 +20,9 @@ public class LoginService {
     }
 
     public Login createUser(String username, String password) {
+        if (loginRepository.existsByUsername(username)) {
+            return null;
+        }
         Login newUser = new Login(username, password);
         return loginRepository.save(newUser);
     }
